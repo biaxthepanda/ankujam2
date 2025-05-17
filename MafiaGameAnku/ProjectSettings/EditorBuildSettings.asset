@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Terminal/TerminalScene.unity
     guid: 4496a3dbb8d263043a4460bac5382ac5
   - enabled: 1
-    path: Assets/Scenes/MAinMenu.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: 562f2f3a0b12ff542878bb011db633b3
   - enabled: 1
     path: Assets/Scenes/Taha.unity
