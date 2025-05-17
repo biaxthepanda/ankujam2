@@ -8,4 +8,8 @@ public class PlayerShooterAgent : ShooterAgent
     {
     
     }
+    public override void Die()
+    {
+        LevelManager.Instance.PlayerDied();
+    }
 }

@@ -41,6 +41,7 @@ public class AgentProjectile : MonoBehaviour
         IDamageable hitActor = other.GetComponent<IDamageable>();
         if(hitActor != null)
         {
+            Debug.Log("HIT SOMETHING");
             hitActor.GetDamage(DamageAmount);
             if (isPlayerProjectile)
             {

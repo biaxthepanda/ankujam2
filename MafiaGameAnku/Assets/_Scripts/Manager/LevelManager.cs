@@ -6,6 +6,8 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
+    public Camera ShootingCamera;
+
     private void Awake()
     {
 
@@ -18,6 +20,10 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    private void Start()
+    {
+        StartNextDay();
+    }
 
 
     void Update()
@@ -46,17 +52,20 @@ public class LevelManager : MonoBehaviour
 
 
 
-    public void StartNextDay() 
+    public void StartNextDay() //Call when win the shooting
     {
         DayIndex++;
         CurrentDayTime = 0;
         EarnedMoneyInDay = 0;
         IsDayStarted = true;
+        GameManager.Instance.ChangeState(GameState.Day);
     }
 
     void EndDay() 
     {
+        Debug.Log("DAY ENDED");
         IsDayStarted = false;
+        GameManager.Instance.ChangeState(GameState.BuyingBeforeNight);
     }
 
 
@@ -69,10 +78,44 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void StartShooting() 
+    {
+        Debug.Log("ShootingStarted");
+        GameManager.Instance.ChangeState(GameState.Night);
+        SwitchCameraMode(true);
+    }
+
     void ReachedQuota() 
     {
         
     }
 
+    public void PlayerDied() 
+    {
+        
+    }
+
+    public void SwitchCameraMode(bool isShottingCamera) 
+    {
+        if (isShottingCamera)
+        {
+            foreach (var cam in RayInputManager.Instance.cameras)
+            {
+                cam.enabled= false;
+            }
+            ShootingCamera.enabled = true;
+            
+        }
+        else
+        {
+            foreach (var cam in RayInputManager.Instance.cameras)
+            {
+                cam.enabled = true;
+            }
+            ShootingCamera.enabled = false;
+        }
+
+    
+    }
 
 }

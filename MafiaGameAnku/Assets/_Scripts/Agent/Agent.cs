@@ -28,9 +28,13 @@ public class Agent : MonoBehaviour
     private float RandomMovementTimeLeft = 1f;
 
     private int _currentRandomDirection;
+
+    public Transform Root;
+    public Rigidbody rb;
     private void Start()
     {
         currentAmmo = maxAmmo;
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -58,13 +62,19 @@ public class Agent : MonoBehaviour
         RandomMovement();
     }
 
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector3(_currentRandomDirection * moveSpeed, rb.velocity.y, rb.velocity.z);
+
+    }
+
     // Rastgele hareket (saða ya da sola kayma)
     void RandomMovement()
     {
         if (RandomMovementTimeLeft < 0)
         { 
             RandomMovementTimeLeft = RandomMovementCooldown;
-            _currentRandomDirection = Mathf.RoundToInt(Random.Range(-1, 1));
+            _currentRandomDirection = Mathf.RoundToInt(Random.Range(-1f, 1f));
         
         }
         else 
@@ -73,7 +83,7 @@ public class Agent : MonoBehaviour
         }
 
 
-            transform.Translate(Vector3.right * _currentRandomDirection * moveSpeed * Time.deltaTime);
+        //transform.Translate(Vector3.right * _currentRandomDirection * moveSpeed * Time.deltaTime);
         
 
 
@@ -115,7 +125,7 @@ public class Agent : MonoBehaviour
         //Quaternion targetRotation = Quaternion.Euler(0, -angle, 0);
         Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
         // Hedefe doðru dönme iþlemi
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        Root.transform.rotation = Quaternion.Slerp(Root.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
     // Ateþ etme
@@ -132,7 +142,7 @@ public class Agent : MonoBehaviour
             float randomAngle = Random.Range(-25f, 25f); // -5 ile 5 derece arasý sapma
             Quaternion spreadRotation = Quaternion.Euler(0f, randomAngle, 0f); // Yalnýzca yatay düzlemde sapma
             Vector3 spreadDirection = spreadRotation * gunTransform.forward; // Sapmýþ yön
-            Instantiate(Projectile,gunTransform.position,this.transform.rotation);
+            Instantiate(Projectile,gunTransform.position,Root.transform.rotation);
             // Ray'i oluþtur ve çiz
             MuzzleFlash.Play();
         }

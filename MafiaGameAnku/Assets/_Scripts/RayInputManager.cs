@@ -34,6 +34,8 @@ public class RayInputManager : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.CurrentState != GameState.Day) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 mousePos = Input.mousePosition;

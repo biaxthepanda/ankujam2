@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileSpeed: 4000
-  DamageAmount: 10
+  DamageAmount: 15
   isPlayerProjectile: 0
 --- !u!54 &-6078860163249496906
 Rigidbody:

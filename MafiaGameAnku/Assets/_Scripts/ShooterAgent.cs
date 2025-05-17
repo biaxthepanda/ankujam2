@@ -15,6 +15,16 @@ public class ShooterAgent : MonoBehaviour, IDamageable
 
     public void GetDamage(int damageAmount)
     {
-        throw new System.NotImplementedException();
+        Health -= damageAmount;
+        if(Health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public virtual void Die()
+    {
+        Debug.Log("DIED");
+        Destroy(gameObject);
     }
 }
