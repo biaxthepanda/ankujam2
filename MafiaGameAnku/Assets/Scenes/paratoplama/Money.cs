@@ -7,6 +7,15 @@ public class Money : MonoBehaviour, IInteractable
     public bool isReal;
     public int moneyAmount;
 
+    public float[] TimeToDestroyPerDay;
+
+    
+
+    void Start()
+    {
+        Invoke("DestroyObject", TimeToDestroyPerDay[LevelManager.Instance.DayIndex]);
+    }
+
     public virtual void Interacted()
     {
         if (isReal)
@@ -23,7 +32,12 @@ public class Money : MonoBehaviour, IInteractable
 
     public virtual void UnInteracted()
     {
-       
+
+    }
+    
+    void DestroyObject()
+    {
+        Destroy(this.gameObject);
     }
 
     

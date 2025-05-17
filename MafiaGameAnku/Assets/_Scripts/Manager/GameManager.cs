@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +8,15 @@ public enum GameState
     Day,
     Night,
     Cinematic,
-    BuyingBeforeNight
+    BuyingBeforeNight,
+    Start,
 }
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    
+    public static Action<GameState> OnGameStateChanged;
 
     public GameState CurrentState { get; private set; }
 
@@ -24,6 +28,9 @@ public class GameManager : MonoBehaviour
 
         CurrentState = newState;
 
+        // Olayı tetikle
+        OnGameStateChanged?.Invoke(CurrentState);
+
         switch (CurrentState)
         {
             case GameState.Day:
@@ -34,6 +41,9 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.BuyingBeforeNight:
                 LevelManager.Instance.StartShooting();
+                break;
+            case GameState.Start:
+                ChangeState(GameState.Day);
                 break;
         }
 
@@ -54,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        ChangeState(GameState.Start);
     }
 
 }
