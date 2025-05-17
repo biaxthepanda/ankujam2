@@ -9,7 +9,7 @@ public class paratoplama : MonoBehaviour
     GameObject fake;
     GameObject real;    
     public TextMeshProUGUI scoreText;
-    public int score;
+    public int kasa;
 
     void Start()
     {
@@ -17,25 +17,28 @@ public class paratoplama : MonoBehaviour
     }
 
     // Update is called once per frame
-     public void AddScore(int amount)
+    public void AddScore(int amount)
     {
-        score += amount;
-        scoreText.text = "Skor: " + score;
+        kasa += amount;
+        scoreText.text = "Kasa: " + kasa;
+        if (GameObject.FindGameObjectsWithTag("real").Length == 0)
+    {
+        Debug.Log(kasa + " kasa toplandı.");
+        
+    }
     }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
         {
-            GameObject obj = hit.collider.gameObject;
-            Debug.Log("Tıklanan obje: " + obj.name);
-            Debug.Log("Tagi: " + obj.tag);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-                // Örnek: Eğer tag "Apple" ise
+            if (Physics.Raycast(ray, out hit))
+            {
+                GameObject obj = hit.collider.gameObject;
+                // Debug.Log("Tıklanan obje: " + obj.name);
+                // Debug.Log("Tagi: " + obj.tag);
                 if (obj.CompareTag("real"))
                 {
                     real = obj;
@@ -49,7 +52,9 @@ public class paratoplama : MonoBehaviour
                     Debug.Log("Sahte paraya tıkladın!");
                     Destroy(fake);
                 }
-        }
+
+            }
+        
     }
     }
 }

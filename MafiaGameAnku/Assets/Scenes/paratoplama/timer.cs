@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class CountdownTimer : MonoBehaviour
 {
-    public float timeRemaining = 45f; // günün süresi
+    public float timeRemaining ; // günün süresi
 
     void Update()
     {
@@ -14,7 +14,7 @@ public class CountdownTimer : MonoBehaviour
         }
         else
         {           
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("Taha");
         }
     }
 }

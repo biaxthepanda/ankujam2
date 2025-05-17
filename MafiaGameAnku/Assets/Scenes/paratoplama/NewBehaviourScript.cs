@@ -18,7 +18,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         int say = 0;
         int saygercek = 0;
-        int kasa = 0;
+        
 
         Vector3 startPos = position.position; // başlangıç pozisyonu
 
@@ -42,12 +42,12 @@ public class NewBehaviourScript : MonoBehaviour
             }
 
             // Sağa kay (X ekseni)
-            position.position += new Vector3(1, 0, 0);
+            position.position += new Vector3(0.2f, 0f, 0f);
 
             // Her 8 adımda: Z'yi artır, X'i sıfırla
             if ((i + 1) % 8 == 0)
             {
-                position.position = new Vector3(startPos.x, startPos.y, position.position.z + 1);
+                position.position = new Vector3(startPos.x, startPos.y, position.position.z +.2f);
             }
         }
     }
