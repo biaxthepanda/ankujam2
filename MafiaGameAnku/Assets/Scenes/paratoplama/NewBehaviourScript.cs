@@ -7,8 +7,14 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject fake;
     public GameObject real;
     public Transform position;
+    public int moneyamount;
 
     void Start()
+    {
+        // Para oluşturma işlemini başlat
+        spawnmoney();
+    }
+    void spawnmoney()
     {
         int say = 0;
         int saygercek = 0;
@@ -16,7 +22,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         Vector3 startPos = position.position; // başlangıç pozisyonu
 
-        for (int i = 0; i < 40; i++)
+        for (int i = moneyamount; i > 0; i--)
         {
             int olasılık = Random.Range(1, 10);
 
