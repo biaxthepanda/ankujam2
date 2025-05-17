@@ -61,7 +61,7 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.ChangeState(GameState.Day);
     }
 
-    void EndDay() 
+    void EndDay() //Get called when the time runs out
     {
         Debug.Log("DAY ENDED");
         IsDayStarted = false;
@@ -72,10 +72,6 @@ public class LevelManager : MonoBehaviour
     public void EarnMoney(int amount)
     {
         EarnedMoneyInDay += amount;
-        if(EarnedMoneyInDay >= DayQuota[DayIndex]) 
-        {
-            ReachedQuota();    
-        }
     }
 
     public void StartShooting() 
@@ -85,14 +81,15 @@ public class LevelManager : MonoBehaviour
         SwitchCameraMode(true);
     }
 
-    void ReachedQuota() 
-    {
-        
-    }
 
     public void PlayerDied() 
     {
-        
+        EndShootingGame();
+    }
+
+    public void EndShootingGame() 
+    {
+        ShootingManager.Instance.DestroyShootingScene();
     }
 
     public void SwitchCameraMode(bool isShottingCamera) 
