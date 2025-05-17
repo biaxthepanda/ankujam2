@@ -6,6 +6,8 @@ public class RayInputManager : MonoBehaviour
 {
     public static RayInputManager Instance { get; private set; }
 
+    public LayerMask interableLayerMask;
+
     private void Awake()
     {
 
@@ -19,7 +21,7 @@ public class RayInputManager : MonoBehaviour
     }
 
 
-    public Camera[] cameras; // 4 kamerayý inspector'dan atayýn
+    public Camera[] cameras; // 4 kamerayï¿½ inspector'dan atayï¿½n
     public Camera CurrentCamera;
 
     private IInteractable _currentInteractable = null;
@@ -49,16 +51,17 @@ public class RayInputManager : MonoBehaviour
                     Ray ray = cam.ScreenPointToRay(mousePos);
                     RaycastHit hit;
 
-                    if (Physics.Raycast(ray, out hit, rayLength))
+                    if (Physics.Raycast(ray, out hit, rayLength,interableLayerMask))
                     {
                         Debug.Log($"Hit from camera '{cam.name}' on: {hit.collider.name}");
                         _currentInteractable = hit.transform.gameObject.GetComponent<IInteractable>();
+                        Debug.Log("Hit" + _currentInteractable.ToString());
                         _currentInteractable.Interacted();
-                        Debug.DrawLine(ray.origin, hit.point, rayColor, 2f); // 2 saniye çizsin
+                        Debug.DrawLine(ray.origin, hit.point, rayColor, 2f); // 2 saniye ï¿½izsin
                     }
                     else
                     {
-                        // Eðer bir yere çarpmadýysa düz çizgi çiz
+                        // Eï¿½er bir yere ï¿½arpmadï¿½ysa dï¿½z ï¿½izgi ï¿½iz
                         Vector3 endPoint = ray.origin + ray.direction * rayLength;
                         Debug.DrawLine(ray.origin, endPoint, Color.yellow, 2f);
                         Debug.Log($"No hit from camera '{cam.name}'");

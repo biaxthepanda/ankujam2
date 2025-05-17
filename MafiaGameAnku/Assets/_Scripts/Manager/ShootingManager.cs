@@ -6,7 +6,6 @@ public class ShootingManager : MonoBehaviour
 {
     public static ShootingManager Instance { get; private set; }
 
-    public Camera ShootingCamera;
 
     private void Awake()
     {
@@ -23,10 +22,11 @@ public class ShootingManager : MonoBehaviour
     public GameObject CurrentShootingScene;
     public GameObject[] ShootingScenes;
 
-    public Transform SceneSpawnLoc;
-    public void SpawnShootingScene(int idx) 
+    public Transform ShootingSceneSpawnLoc;
+    public void SpawnShootingScene(int idx)
     {
-        Instantiate(ShootingScenes[idx],SceneSpawnLoc.transform);
+        CurrentShootingScene = Instantiate(ShootingScenes[idx], ShootingSceneSpawnLoc.transform.position, Quaternion.identity);
+        GameManager.Instance.PlayerShooterAgent.ResetPlayer();
     }
 
     public void DestroyShootingScene() 

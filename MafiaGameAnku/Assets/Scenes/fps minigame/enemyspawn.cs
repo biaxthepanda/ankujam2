@@ -20,22 +20,11 @@ public class enemyspawn : MonoBehaviour
     {
         for (int i = 0; i < mobsayısı; i++)
         {
-            Vector3 spawnPos = spawnPoint.position + new Vector3(0f, 0f, i * 2f); // aralıklı spawn
-            GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            Vector3 spawnPos = spawnPoint.position + new Vector3((Random.Range(0,1)*2-1) * Random.Range(1f,2f)*i, 0f, 0f); // aralıklı spawn
+            GameObject enemy = Instantiate(enemyPrefab, spawnPos, spawnPoint.rotation);
             enemies.Add(enemy);
         }
     }
 
-    void MoveEnemies()
-    {
-        // foreach (GameObject enemy in enemies)
-        // {
-        //     if (enemy != null) // kontrol: öldü mü vs.
-        //         enemy.transform.position += new Vector3(0f, 0f, 1f); // ileri hareket
-        // }
-    }
-    // void OnCollisionEnter(Collision collision)
-    // {
-    //     Debug.Log("Çarpışma: " + collision.gameObject.name);
-    // }
+  
 }

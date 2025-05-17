@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IInteractable
 {
     public int health = 100;
 
-    public float EnemySpeed ;
+    public float EnemySpeed;
 
     public void TakeDamage(int amount)
     {
@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Die();
+            
         }
     }
 
@@ -25,6 +26,19 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         Debug.Log("Enemy öldü.");
+        LevelManager.Instance.EarnMoney(10);
         Destroy(gameObject);
+    }
+
+
+    public virtual void Interacted()
+    {
+        Debug.Log("Enemy interacted");
+        TakeDamage(10);
+    }
+    
+    public virtual void UnInteracted()
+    {
+        
     }
 }

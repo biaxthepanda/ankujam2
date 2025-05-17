@@ -55,10 +55,18 @@ public class LevelManager : MonoBehaviour
     public void StartNextDay() //Call when win the shooting
     {
         DayIndex++;
+        StartDay();
+
+    }
+
+    public void StartDay() //Call when lose the shooting
+    {
         CurrentDayTime = 0;
         EarnedMoneyInDay = 0;
         IsDayStarted = true;
         GameManager.Instance.ChangeState(GameState.Day);
+        SwitchCameraMode(false);
+       
     }
 
     void EndDay() //Get called when the time runs out
@@ -78,13 +86,15 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("ShootingStarted");
         GameManager.Instance.ChangeState(GameState.Night);
+        ShootingManager.Instance.SpawnShootingScene(DayIndex);
         SwitchCameraMode(true);
     }
 
 
-    public void PlayerDied() 
+    public void PlayerDied()
     {
         EndShootingGame();
+        StartDay();
     }
 
     public void EndShootingGame() 

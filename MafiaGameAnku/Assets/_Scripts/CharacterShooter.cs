@@ -17,6 +17,7 @@ public class CharacterShooter : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.CurrentState != GameState.Night) return;
         RotatePlayer();
         MovePlayer();
         HandleShooting();
@@ -42,8 +43,8 @@ public class CharacterShooter : MonoBehaviour
 
     void MovePlayer()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal"); // A-D / Sol-Sað
-        float vertical = Input.GetAxisRaw("Vertical");     // W-S / Ýleri-Geri
+        float horizontal = Input.GetAxisRaw("Horizontal"); // A-D / Sol-Saï¿½
+        float vertical = Input.GetAxisRaw("Vertical");     // W-S / ï¿½leri-Geri
 
         Vector3 moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
 
@@ -57,7 +58,7 @@ public class CharacterShooter : MonoBehaviour
     {
         if (isReloading) return;
 
-        if (Input.GetMouseButtonDown(0)) // Sol týk
+        if (Input.GetMouseButtonDown(0)) // Sol tï¿½k
         {
             Ray ray = new Ray(gunTransform.position, gunTransform.forward);
             RaycastHit hit;
@@ -72,13 +73,13 @@ public class CharacterShooter : MonoBehaviour
             //    {
             //        agent.GetDamage(DamageAmount);
             //    }
-            //    Debug.DrawLine(gunTransform.position, hit.point, Color.red, 1f); // Kýrmýzý çizgi: isabet
+            //    Debug.DrawLine(gunTransform.position, hit.point, Color.red, 1f); // Kï¿½rmï¿½zï¿½ ï¿½izgi: isabet
             //}
             //else
             //{
-            //    // Ýsabet yoksa ileriye sabit uzunlukta çiz
+            //    // ï¿½sabet yoksa ileriye sabit uzunlukta ï¿½iz
             //    Vector3 endPoint = gunTransform.position + gunTransform.forward * 200;
-            //    Debug.DrawLine(gunTransform.position, endPoint, Color.yellow, 1f); // Sarý çizgi: ýskalama
+            //    Debug.DrawLine(gunTransform.position, endPoint, Color.yellow, 1f); // Sarï¿½ ï¿½izgi: ï¿½skalama
             //}
             AgentProjectile projectile = Instantiate(Projectile,gunTransform.position,transform.rotation);
             projectile.isPlayerProjectile = true; //For hit notify
