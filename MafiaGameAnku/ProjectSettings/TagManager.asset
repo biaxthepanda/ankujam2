@@ -8,6 +8,8 @@ TagManager:
   - CinemachineTarget
   - ScreenCamera
   - cockpit_capitalLaser
+  - fake
+  - real
   layers:
   - Default
   - TransparentFX
