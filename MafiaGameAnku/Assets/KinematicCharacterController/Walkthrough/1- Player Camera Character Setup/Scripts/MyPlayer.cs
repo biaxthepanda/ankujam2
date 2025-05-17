@@ -17,7 +17,6 @@ namespace KinematicCharacterController.Walkthrough.PlayerCameraCharacterSetup
 
         private void Start()
         {
-            Cursor.lockState = CursorLockMode.Locked;
 
             // Tell camera to follow transform
             OrbitCamera.SetFollowTransform(CameraFollowPoint);
