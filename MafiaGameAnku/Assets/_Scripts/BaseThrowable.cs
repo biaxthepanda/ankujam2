@@ -64,5 +64,7 @@ public class BaseThrowable : MonoBehaviour, IInteractable
             rb.velocity = move;
             lastVelocity = rb.velocity;
         }
+
+       
     }
 }
