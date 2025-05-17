@@ -12,8 +12,12 @@ TagManager:
   - real
   - line
   - enemy
+<<<<<<< Updated upstream
   - Table
   - Food
+=======
+  - FallingItem
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
