@@ -12,6 +12,7 @@ TagManager:
   - FallingItem
   - MainLight
   - FriendlyAgent
+  - FriendlySpawn
   layers:
   - Default
   - TransparentFX

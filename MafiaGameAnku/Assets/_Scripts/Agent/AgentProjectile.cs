@@ -49,7 +49,10 @@ public class AgentProjectile : MonoBehaviour
                 Debug.Log("PLAYER HIT SOMETHING");
             }
         }
-        
-        Destroy(gameObject);
+        if (!other.GetComponent<AgentProjectile>())
+        {
+            Destroy(gameObject);
+        }
+            
     }
 }

@@ -4674,6 +4674,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8160772696913192866, guid: 929ebc6d48b673d45a3fc45093bff32c, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6018,13 +6022,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShootingCamera: {fileID: 511251106}
   IsDayStarted: 0
-  DayIndex: 0
+  DayIndex: 2
   DayTime:
   - 25
-  - 4
-  - 4
-  - 4
-  EarnedMoneyInDay: 0
+  - 5
+  - 5
+  - 5
+  EarnedMoneyInDay: 400
   DayQuota: 
 --- !u!4 &1602462757 stripped
 Transform:
@@ -6828,6 +6832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f07f00100dc9c418fe96d9a008b760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FriendlyAgentPrefab: {fileID: 2995887163691042431, guid: 6455d3a4846792a429cc669c807fd010, type: 3}
   CurrentShootingScene: {fileID: 0}
   ShootingScenes:
   - {fileID: 4995276475907373288, guid: a35d6c62da68585438e58b5d1fd4d629, type: 3}

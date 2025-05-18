@@ -22,8 +22,13 @@ public class MoneySpawner : MonoBehaviour
 
     IEnumerator RepeatSpawning()
     {
-        while (GameManager.Instance.CurrentState == GameState.Day)
+        while (true)
         {
+            if(GameManager.Instance.CurrentState != GameState.Day)
+            {
+                yield return null;
+                continue;
+            }
             nextSpawnPos = spawnStartPosition.position;
             yield return StartCoroutine(SpawnMoneyRoutine());
 

@@ -128,6 +128,10 @@ PrefabInstance:
       propertyPath: targetLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 5836250379742829554, guid: a797ddb619ed8a14d8d1ca7a9b3845a9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6687834128015809954, guid: a797ddb619ed8a14d8d1ca7a9b3845a9, type: 3}
       propertyPath: m_Layer
       value: 7
