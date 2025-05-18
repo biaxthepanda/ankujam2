@@ -11,6 +11,7 @@ TagManager:
   - fake
   - FallingItem
   - MainLight
+  - FriendlyAgent
   layers:
   - Default
   - TransparentFX

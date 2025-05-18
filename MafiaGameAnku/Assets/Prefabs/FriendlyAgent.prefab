@@ -124,6 +124,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4065372689318902130, guid: a797ddb619ed8a14d8d1ca7a9b3845a9, type: 3}
+      propertyPath: m_TagString
+      value: FriendlyAgent
+      objectReference: {fileID: 0}
     - target: {fileID: 4173695270456597189, guid: a797ddb619ed8a14d8d1ca7a9b3845a9, type: 3}
       propertyPath: isFriendly
       value: 1
