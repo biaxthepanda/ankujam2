@@ -10,6 +10,7 @@ public class PlayerShooterAgent : ShooterAgent
     }
     public override void Die()
     {
+        Debug.LogWarning("Player Died");
         LevelManager.Instance.PlayerDied();
         this.gameObject.SetActive(false);
     }

@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class Agent : MonoBehaviour
 {
-    public bool isFriendly = false; // Eðer dostsa true, düþman ise false
+    public bool isFriendly = false; // Eï¿½er dostsa true, dï¿½ï¿½man ise false
     public float moveSpeed = 3f;
     public float rotationSpeed = 5f;
-    public float fireRate = 1f; // Ne kadar sýk ateþ eder
-    public int maxAmmo = 8; // Maksimum mermi sayýsý
+    public float fireRate = 1f; // Ne kadar sï¿½k ateï¿½ eder
+    public int maxAmmo = 8; // Maksimum mermi sayï¿½sï¿½
     private int currentAmmo;
-    public float reloadTime = 1.2f; // Reload süresi
+    public float reloadTime = 1.2f; // Reload sï¿½resi
 
     private bool isReloading = false;
     private float nextFireTime = 0f;
     private Transform target;
 
-    public Transform gunTransform; // Silahýn bulunduðu transform (mermi atýþý için)
-    public LayerMask targetLayer; // Hedefin bulunduðu layer (dost ve düþmanlar)
+    public Transform gunTransform; // Silahï¿½n bulunduï¿½u transform (mermi atï¿½ï¿½ï¿½ iï¿½in)
+    public LayerMask targetLayer; // Hedefin bulunduï¿½u layer (dost ve dï¿½ï¿½manlar)
 
     public GameObject Projectile;
 
@@ -49,7 +49,7 @@ public class Agent : MonoBehaviour
         {
             if (Time.time >= nextFireTime)
             {
-                // Eðer hedef yoksa yeni bir hedef seç, varsa mevcut hedefe ateþ et
+                // Eï¿½er hedef yoksa yeni bir hedef seï¿½, varsa mevcut hedefe ateï¿½ et
                 if (target == null)
                 {
                     FindTarget();
@@ -68,7 +68,7 @@ public class Agent : MonoBehaviour
 
     }
 
-    // Rastgele hareket (saða ya da sola kayma)
+    // Rastgele hareket (saï¿½a ya da sola kayma)
     void RandomMovement()
     {
         if (RandomMovementTimeLeft < 0)
@@ -92,7 +92,7 @@ public class Agent : MonoBehaviour
     // Hedef belirleme, sadece mevcut hedef yoksa
     void FindTarget()
     {
-        // Eðer zaten bir hedef varsa, yeni bir hedef seçme
+        // Eï¿½er zaten bir hedef varsa, yeni bir hedef seï¿½me
         if (target != null) return;
 
         Collider[] enemies;
@@ -112,23 +112,23 @@ public class Agent : MonoBehaviour
         }
     }
 
-    // Hedefe doðru dönme (bazý durumlarda biraz yanýna bakma)
+    // Hedefe doï¿½ru dï¿½nme (bazï¿½ durumlarda biraz yanï¿½na bakma)
     void RotateTowardsTarget()
     {
         if (target == null) return;
 
         Vector3 directionToTarget = target.position - transform.position;
-        directionToTarget.y = 0; // Y eksenini sýfýrlýyoruz çünkü top-down bir oyun
+        directionToTarget.y = 0; // Y eksenini sï¿½fï¿½rlï¿½yoruz ï¿½ï¿½nkï¿½ top-down bir oyun
 
-        // Hedefin pozisyonunu doðru bir þekilde hesapla
+        // Hedefin pozisyonunu doï¿½ru bir ï¿½ekilde hesapla
         //float angle = Mathf.Atan2(directionToTarget.z, directionToTarget.x) * Mathf.Rad2Deg;
         //Quaternion targetRotation = Quaternion.Euler(0, -angle, 0);
         Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
-        // Hedefe doðru dönme iþlemi
+        // Hedefe doï¿½ru dï¿½nme iï¿½lemi
         Root.transform.rotation = Quaternion.Slerp(Root.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-    // Ateþ etme
+    // Ateï¿½ etme
     void Fire()
     {
         if (currentAmmo <= 0) return;
@@ -137,18 +137,18 @@ public class Agent : MonoBehaviour
         {
             nextFireTime = Time.time + fireRate;
             currentAmmo--;
-
-            // Yön vektörüne rastgele bir açýyla sapma ekle
-            float randomAngle = Random.Range(-25f, 25f); // -5 ile 5 derece arasý sapma
-            Quaternion spreadRotation = Quaternion.Euler(0f, randomAngle, 0f); // Yalnýzca yatay düzlemde sapma
-            Vector3 spreadDirection = spreadRotation * gunTransform.forward; // Sapmýþ yön
+             SoundManager.Instance.PlaySFX(SoundEffects.Pistol); 
+            // Yï¿½n vektï¿½rï¿½ne rastgele bir aï¿½ï¿½yla sapma ekle
+            float randomAngle = Random.Range(-25f, 25f); // -5 ile 5 derece arasï¿½ sapma
+            Quaternion spreadRotation = Quaternion.Euler(0f, randomAngle, 0f); // Yalnï¿½zca yatay dï¿½zlemde sapma
+            Vector3 spreadDirection = spreadRotation * gunTransform.forward; // Sapmï¿½ï¿½ yï¿½n
             Instantiate(Projectile,gunTransform.position,Root.transform.rotation);
-            // Ray'i oluþtur ve çiz
+            // Ray'i oluï¿½tur ve ï¿½iz
             MuzzleFlash.Play();
         }
     }
 
-    // Reload iþlemi
+    // Reload iï¿½lemi
     void Reload()
     {
         isReloading = true;

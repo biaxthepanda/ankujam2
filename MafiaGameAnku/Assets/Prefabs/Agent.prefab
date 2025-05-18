@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 8471957150781743373}
   - component: {fileID: 4526325954500278587}
   - component: {fileID: 4173695270456597189}
+  - component: {fileID: 5836250379742829554}
   m_Layer: 13
   m_Name: Agent
   m_TagString: Untagged
@@ -279,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7047c15ea5931a84b850159f413eb4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 100
+  InitialHealth: 50
   Health: 0
 --- !u!114 &4173695270456597189
 MonoBehaviour:
@@ -308,6 +309,29 @@ MonoBehaviour:
   RandomMovementCooldown: 1
   Root: {fileID: 5455556694560977257}
   rb: {fileID: 0}
+--- !u!136 &5836250379742829554
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4065372689318902130}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.68
+  m_Height: 3.04
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.03, z: 0}
 --- !u!1 &6687834128015809954
 GameObject:
   m_ObjectHideFlags: 0

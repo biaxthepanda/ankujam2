@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI MoneyText;
 
+    public GameObject BeforeNightCanvas;
+
 
     private void Awake()
     {
@@ -21,10 +23,22 @@ public class UIManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
     }
-    
+
 
     public void UpdateMoneyText(int money)
     {
-         MoneyText.text = "MONEY:" + money.ToString();
+        MoneyText.text = "PARA: " + money.ToString();
+    }
+
+    public void OpenBeforeNightCanvas()
+    {
+        BeforeNightCanvas.SetActive(true);
+    }
+
+    public void StartShoot()
+    {
+        LevelManager.Instance.StartShooting();
+        BeforeNightCanvas.SetActive(false);
+
     }
 }

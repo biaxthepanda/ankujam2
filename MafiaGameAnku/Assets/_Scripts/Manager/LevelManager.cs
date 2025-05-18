@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class LevelManager : MonoBehaviour
 {
@@ -65,6 +66,12 @@ public class LevelManager : MonoBehaviour
         EarnedMoneyInDay = 0;
         IsDayStarted = true;
         GameManager.Instance.ChangeState(GameState.Day);
+        Debug.Log(DayIndex.ToString() + " DAY STARTED");
+        RayInputManager.Instance.cameras[DayIndex].GetComponent<UniversalAdditionalCameraData>().renderPostProcessing = false;
+
+        if (RayInputManager.Instance.cameras[DayIndex].transform.childCount > 0)
+            RayInputManager.Instance.cameras[DayIndex].transform.GetChild(0).gameObject.SetActive(false);
+
         SwitchCameraMode(false);
        
     }

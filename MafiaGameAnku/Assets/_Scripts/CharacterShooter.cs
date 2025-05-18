@@ -83,7 +83,7 @@ public class CharacterShooter : MonoBehaviour
             //}
             AgentProjectile projectile = Instantiate(Projectile,gunTransform.position,transform.rotation);
             projectile.isPlayerProjectile = true; //For hit notify
-
+           SoundManager.Instance.PlaySFX(SoundEffects.Pistol); 
 
 
             Debug.Log(AmmoInChamber.ToString());

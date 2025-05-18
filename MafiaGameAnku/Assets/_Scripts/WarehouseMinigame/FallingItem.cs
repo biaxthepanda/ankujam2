@@ -55,6 +55,7 @@ public class FallingItem : MonoBehaviour, IInteractable
                 if (inputChar == itemKey)
                 {
                     Debug.Log("Doğru tuşa basıldı");
+                    SoundManager.Instance.PlaySFX(SoundEffects.Box);
                     targetBox.FulfillRequest(true); // success
                 }
                 else

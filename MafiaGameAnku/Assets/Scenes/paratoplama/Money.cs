@@ -21,6 +21,7 @@ public class Money : MonoBehaviour, IInteractable
         if (isReal)
         {
             LevelManager.Instance.EarnMoney(moneyAmount);
+            SoundManager.Instance.PlaySFX(SoundEffects.Money);
             Destroy(this.gameObject);
         }
         else

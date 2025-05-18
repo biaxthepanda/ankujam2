@@ -1,65 +1,4 @@
-// using System.Collections;
-// using UnityEngine;
 
-// public class Table : MonoBehaviour
-// {
-//     public int currentRequest = -1; // -1 = istemiyor
-//     public float requestCooldown = 5f;
-//     public float requestDuration = 7f;
-//     public bool isWaiting = false;
-
-//     public void TryDeliverFood(GameObject foodObj)
-//     {
-//         if (!isWaiting) return;
-
-//         int deliveredType = foodObj.GetComponent<Food>().foodType;
-
-//         if (deliveredType == currentRequest)
-//         {
-//             Debug.Log("Doğru yemek!"); 
-//             // Puanı arttır
-//         }
-//         else
-//         {
-//             Debug.Log("Yanlış yemek!");
-//             // Puanı düşür
-//         }
-
-//         StopAllCoroutines();
-//         StartCoroutine(Cooldown());
-//     }
-
-//     public void StartRequest(int foodType)
-//     {
-//         if (isWaiting) return;
-
-//         currentRequest = foodType;
-//         isWaiting = true;
-//         Debug.Log("Masa yemek istedi: " + foodType);
-
-//         StartCoroutine(RequestTimer());
-//     }
-
-//     IEnumerator RequestTimer()
-//     {
-//         yield return new WaitForSeconds(requestDuration);
-
-//         if (isWaiting)
-//         {
-//             Debug.Log("Sipariş iptal oldu!");
-//             // Puanı düşür
-//             StartCoroutine(Cooldown());
-//         }
-//     }
-
-//     IEnumerator Cooldown()
-//     {
-//         isWaiting = false;
-//         currentRequest = -1;
-//         yield return new WaitForSeconds(requestCooldown);
-//         // tekrar isteyebilecek
-//     }
-// }
 using UnityEngine;
 using System.Collections;
 
@@ -70,12 +9,36 @@ public class Table : MonoBehaviour
     public float requestDuration = 6f;
     public float cooldownDuration = 5f;
 
+    public GameObject pizzaIcon;
+
+    void OnEnable()
+    {
+        GameManager.OnGameStateChanged += HandleGameStateChanged;
+    }
+
+    void OnDisable()
+    {
+        GameManager.OnGameStateChanged -= HandleGameStateChanged;
+    }
+
+    private void HandleGameStateChanged(GameState state)
+    {
+        if(state != GameState.Day)
+        {
+
+            isWaiting = false;
+            pizzaIcon.SetActive(false);
+            StopAllCoroutines();
+        }
+    }
+
     public void StartRequest(int foodType)
     {
         if (isWaiting) return;
 
         currentRequest = foodType;
         isWaiting = true;
+         pizzaIcon.SetActive(true);
         Debug.Log(name + " sipariş verdi: " + foodType);
 
         StartCoroutine(RequestTimer());
@@ -98,6 +61,7 @@ public class Table : MonoBehaviour
 
         StopAllCoroutines();
         isWaiting = false;
+         pizzaIcon.SetActive(false);
         currentRequest = -1;
         StartCoroutine(Cooldown());
     }
@@ -117,6 +81,7 @@ public class Table : MonoBehaviour
             Debug.Log("Süre doldu, sipariş iptal!");
             // PUAN DÜŞÜR
             isWaiting = false;
+             pizzaIcon.SetActive(false);
             currentRequest = -1;
             StartCoroutine(Cooldown());
         }

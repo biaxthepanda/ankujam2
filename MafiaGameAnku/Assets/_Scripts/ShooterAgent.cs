@@ -15,6 +15,7 @@ public class ShooterAgent : MonoBehaviour, IDamageable
 
     public void GetDamage(int damageAmount)
     {
+         Debug.Log("HIT");
         Health -= damageAmount;
         if(Health <= 0)
         {

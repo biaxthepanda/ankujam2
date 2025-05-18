@@ -1,11 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum SoundEffects
 {
-        Pistol,
-        Shotgun,
+    Pistol,
+    Box,
+    BoxSurface,
+    Footstep,
+    Hit,
+    Horn,
+    Reload,
+    Money
+
 }
 
 public class SoundManager : MonoBehaviour
@@ -37,4 +45,5 @@ public class SoundManager : MonoBehaviour
 
     }
 
+ 
 }

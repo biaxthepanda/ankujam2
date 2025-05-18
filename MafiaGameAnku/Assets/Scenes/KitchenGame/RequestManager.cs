@@ -18,7 +18,7 @@ public class RequestManager : MonoBehaviour
     IEnumerator SiparisDagitici()
     {
         
-        while (true)
+        while (true && GameManager.Instance.CurrentState == GameState.Day && LevelManager.Instance.DayIndex > 2)
         {
             Table t = tables[Random.Range(0, tables.Length)];
             if (!t.isWaiting)
@@ -31,6 +31,7 @@ public class RequestManager : MonoBehaviour
                 if (foodPoint.childCount < 1)
                 {
                     Instantiate(FoodPrefab, foodPoint.transform);
+
                 }
             }
             yield return new WaitForSeconds(Random.Range(4f, 8f));
