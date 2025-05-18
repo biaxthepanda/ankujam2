@@ -56,6 +56,7 @@ public class LevelManager : MonoBehaviour
     public void StartNextDay() //Call when win the shooting
     {
         DayIndex++;
+        UIManager.Instance.ToggleATutorial(DayIndex);
         StartDay();
 
     }
@@ -80,6 +81,7 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("DAY ENDED");
         IsDayStarted = false;
+        UIManager.Instance.HideAllTutorials();
         GameManager.Instance.ChangeState(GameState.BuyingBeforeNight);
     }
 

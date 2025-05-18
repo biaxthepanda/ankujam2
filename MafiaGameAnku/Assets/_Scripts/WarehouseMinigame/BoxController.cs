@@ -69,7 +69,7 @@ public class BoxController : MonoBehaviour
         if (isCorrect)
         {
             // TODO: Trigger success
-            LevelManager.Instance.EarnMoney(10); // örnek: 10 para kazan
+            LevelManager.Instance.EarnMoney(20); // örnek: 10 para kazan
             
             Debug.Log($"[BOX] Correct key '' => SUCCESS");
         }

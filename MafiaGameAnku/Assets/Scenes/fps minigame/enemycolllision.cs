@@ -18,8 +18,8 @@ public class enemycolllision : MonoBehaviour
     {
         Debug.LogWarning("Çarpışma Algılandı: " + other.gameObject.name);
         Destroy(other.gameObject);
-        LevelManager.Instance.EarnMoney(-10);
-        
+        LevelManager.Instance.EarnMoney(-20);
+
             // Burada çarpışma sonrası yapılacak işlemleri ekleyebilirsiniz
         // Örneğin, oyuncunun canını azaltmak veya düşmanı yok etmek gibi
 

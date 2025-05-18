@@ -57,7 +57,7 @@ public class KitchenPlayerController : MonoBehaviour
             {
                 int foodType = carriedFood.GetComponent<Food>().foodType;
                 table.TryDeliverFood(foodType);
-                LevelManager.Instance.EarnMoney(10);
+                LevelManager.Instance.EarnMoney(20);
                 Destroy(carriedFood.gameObject);
                 carriedFood = null;
             }

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,6 +16,11 @@ public class UIManager : MonoBehaviour
     public GameObject BeforeNightCanvas;
     public GameObject DeathCanvas;
     public GameObject NextDayCanvas;
+    public TextMeshProUGUI DialogueText;
+
+    public String[] DialogueTexts;
+
+    public Transform Tutorial;
 
     private void Awake()
     {
@@ -58,6 +65,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenNextDayCanvas()
     {
+        UpdateDialogueText();
         NextDayCanvas.SetActive(true);
     }
 
@@ -67,10 +75,32 @@ public class UIManager : MonoBehaviour
         LevelManager.Instance.StartNextDay();
         NextDayCanvas.SetActive(false);
     }
-    
+
     public void RestartGameButton()
     {
         LevelManager.Instance.StartDay();
         DeathCanvas.SetActive(false);
+    }
+
+    public void UpdateDialogueText()
+    {
+        DialogueText.text = DialogueTexts[LevelManager.Instance.DayIndex];
+    }
+
+    public void ToggleATutorial(int index)
+    {
+        foreach (Transform child in Tutorial)
+        {
+            child.gameObject.SetActive(false);
+        }
+        Tutorial.GetChild(index).gameObject.SetActive(true);
+    }
+    
+    public void HideAllTutorials()
+    {
+        foreach (Transform child in Tutorial)
+        {
+            child.gameObject.SetActive(false);
+        }
     }
 }
