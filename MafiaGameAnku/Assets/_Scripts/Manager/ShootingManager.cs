@@ -22,6 +22,10 @@ public class ShootingManager : MonoBehaviour
     public GameObject CurrentShootingScene;
     public GameObject[] ShootingScenes;
 
+    private int _currentDeadEnemy;
+
+    public int[] EnemyAmountPerNight;
+
     public Transform ShootingSceneSpawnLoc;
     public void SpawnShootingScene(int idx)
     {
@@ -29,10 +33,22 @@ public class ShootingManager : MonoBehaviour
         GameManager.Instance.PlayerShooterAgent.ResetPlayer();
     }
 
-    public void DestroyShootingScene() 
+    public void DestroyShootingScene()
     {
         Destroy(CurrentShootingScene.gameObject);
         CurrentShootingScene = null;
+    }
+
+    public void EnemyDied()
+    {
+        _currentDeadEnemy++;
+        if (_currentDeadEnemy >= EnemyAmountPerNight[LevelManager.Instance.DayIndex])
+        {
+            Debug.LogWarning("All enemies are dead");
+            _currentDeadEnemy = 0;
+            DestroyShootingScene();
+            GameManager.Instance.ChangeState(GameState.Cinematic);
+        }
     }
 
 }

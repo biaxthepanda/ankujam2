@@ -27,5 +27,6 @@ public class ShooterAgent : MonoBehaviour, IDamageable
     {
         Debug.Log("DIED");
         Destroy(gameObject);
+        ShootingManager.Instance.EnemyDied();
     }
 }

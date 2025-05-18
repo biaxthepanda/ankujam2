@@ -37,7 +37,7 @@ public class ItemSpawner : MonoBehaviour
         if (!box) return;
         
 
-        GameObject item = Instantiate(itemPrefabs[box.BoxType], spawnPoint.position, Quaternion.identity);
+        GameObject item = Instantiate(itemPrefabs[box.BoxType], spawnPoint.position, this.transform.rotation);
         var falling = item.GetComponent<FallingItem>();
         falling.targetBox = box;
     }
