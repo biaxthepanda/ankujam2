@@ -15,7 +15,7 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    
+
     public static Action<GameState> OnGameStateChanged;
 
     public GameState CurrentState { get; private set; }
@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
             case GameState.Night:
                 break;
             case GameState.Cinematic:
+                Invoke("CallNextDayAfterCinematic", 5f);
                 break;
             case GameState.BuyingBeforeNight:
                 UIManager.Instance.OpenBeforeNightCanvas();
@@ -65,6 +66,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ChangeState(GameState.Start);
+    }
+
+    private void CallNextDayAfterCinematic()
+    {
+        LevelManager.Instance.StartNextDay();
     }
 
 }
