@@ -108,7 +108,6 @@ public class Table : MonoBehaviour
 
     while (timer > 0f)
     {
-        Debug.Log("Kalan süre: " + Mathf.Ceil(timer));
         timer -= Time.deltaTime;
         yield return null;
     }
@@ -125,7 +124,7 @@ public class Table : MonoBehaviour
 
     IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(cooldownDuration);
+        yield return new WaitForSeconds(Random.Range(cooldownDuration,cooldownDuration*2f));
         // tekrar sipariş alabilir
     }
 }

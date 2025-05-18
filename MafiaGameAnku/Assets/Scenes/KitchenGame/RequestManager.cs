@@ -1,35 +1,13 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
 
-// public class RequestManager : MonoBehaviour
-// {
-//     public Table[] tables;
-//     public GameObject foodPrefabs; // yemek prefabları
-
-//     void Start()
-//     {
-//         StartCoroutine(SiparisAt());
-//     }
-
-//     IEnumerator SiparisAt()
-//     {
-//         while (true)
-//         {
-//             Table t = tables[Random.Range(0, tables.Length)];
-//             int yemek = Random.Range(0, 3); // 0,1,2 gibi yemek ID'leri
-//             t.TryDeliverFood(foodPrefabs); // yemek gönder
-
-//             yield return new WaitForSeconds(Random.Range(5f, 10f));
-//         }
-//     }
-// }
 using UnityEngine;
 using System.Collections;
 
 public class RequestManager : MonoBehaviour
 {
     
+    public Transform[] foodSpawnPoints;
+
+    public GameObject FoodPrefab;
     public Table[] tables;
 
     void Start()
@@ -45,8 +23,15 @@ public class RequestManager : MonoBehaviour
             Table t = tables[Random.Range(0, tables.Length)];
             if (!t.isWaiting)
             {
-                int yemek = Random.Range(0, 3);
+                int yemek = 0;     //Random.Range(0, 3);
                 t.StartRequest(yemek);
+            }
+            foreach (var foodPoint in foodSpawnPoints)
+            {
+                if (foodPoint.childCount < 1)
+                {
+                    Instantiate(FoodPrefab, foodPoint.transform);
+                }
             }
             yield return new WaitForSeconds(Random.Range(4f, 8f));
         }

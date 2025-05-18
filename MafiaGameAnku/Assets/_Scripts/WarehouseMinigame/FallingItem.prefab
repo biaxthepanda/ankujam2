@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7453454674180981354}
   - component: {fileID: 2900947597726527027}
   - component: {fileID: 4359591651173465803}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: FallingItem
   m_TagString: FallingItem
   m_Icon: {fileID: 0}
