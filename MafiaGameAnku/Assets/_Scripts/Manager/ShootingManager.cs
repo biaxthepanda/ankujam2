@@ -26,11 +26,15 @@ public class ShootingManager : MonoBehaviour
 
     public int[] EnemyAmountPerNight;
 
+    private int currentFriendlyAmount;
+
     public Transform ShootingSceneSpawnLoc;
     public void SpawnShootingScene(int idx)
     {
         CurrentShootingScene = Instantiate(ShootingScenes[idx], ShootingSceneSpawnLoc.transform.position, Quaternion.identity);
         GameManager.Instance.PlayerShooterAgent.ResetPlayer();
+        currentFriendlyAmount = LevelManager.Instance.EarnedMoneyInDay / 100;
+        LevelManager.Instance.EarnedMoneyInDay = 0;
     }
 
     public void DestroyShootingScene()

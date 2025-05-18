@@ -70,6 +70,7 @@ public class BoxController : MonoBehaviour
         {
             // TODO: Trigger success
             LevelManager.Instance.EarnMoney(10); // örnek: 10 para kazan
+            
             Debug.Log($"[BOX] Correct key '' => SUCCESS");
         }
         else

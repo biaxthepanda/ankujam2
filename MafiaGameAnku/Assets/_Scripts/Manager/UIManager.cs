@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI MoneyText;
 
+    public TextMeshProUGUI MoneyFriendlyText;
+
     public GameObject BeforeNightCanvas;
 
 
@@ -33,6 +35,7 @@ public class UIManager : MonoBehaviour
     public void OpenBeforeNightCanvas()
     {
         BeforeNightCanvas.SetActive(true);
+        UpdateMoneyFriendlyText();
     }
 
     public void StartShoot()
@@ -40,5 +43,10 @@ public class UIManager : MonoBehaviour
         LevelManager.Instance.StartShooting();
         BeforeNightCanvas.SetActive(false);
 
+    }
+
+    public void UpdateMoneyFriendlyText( )
+    {
+        MoneyFriendlyText.text = LevelManager.Instance.EarnedMoneyInDay+"/100 = " + (LevelManager.Instance.EarnedMoneyInDay/100).ToString();
     }
 }

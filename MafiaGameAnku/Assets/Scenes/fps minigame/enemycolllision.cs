@@ -16,11 +16,12 @@ public class enemycolllision : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("enemy"))
-        {
-            Debug.Log("Çarpışma: " + other.gameObject.name);
+        Debug.LogWarning("Çarpışma Algılandı: " + other.gameObject.name);
+        Destroy(other.gameObject);
+        LevelManager.Instance.EarnMoney(-10);
+        
             // Burada çarpışma sonrası yapılacak işlemleri ekleyebilirsiniz
-            // Örneğin, oyuncunun canını azaltmak veya düşmanı yok etmek gibi
-        }
+        // Örneğin, oyuncunun canını azaltmak veya düşmanı yok etmek gibi
+
     }
 }
