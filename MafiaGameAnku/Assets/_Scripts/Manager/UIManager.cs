@@ -12,7 +12,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI MoneyFriendlyText;
 
     public GameObject BeforeNightCanvas;
-
+    public GameObject DeathCanvas;
+    public GameObject NextDayCanvas;
 
     private void Awake()
     {
@@ -45,8 +46,31 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void UpdateMoneyFriendlyText( )
+    public void UpdateMoneyFriendlyText()
     {
-        MoneyFriendlyText.text = LevelManager.Instance.EarnedMoneyInDay+"/100 = " + (LevelManager.Instance.EarnedMoneyInDay/100).ToString();
+        MoneyFriendlyText.text = LevelManager.Instance.EarnedMoneyInDay + "/100 = " + (LevelManager.Instance.EarnedMoneyInDay / 100).ToString();
+    }
+
+    public void OpenDeathCanvas()
+    {
+        DeathCanvas.SetActive(true);
+    }
+
+    public void OpenNextDayCanvas()
+    {
+        NextDayCanvas.SetActive(true);
+    }
+
+
+    public void NextDayButton()
+    {
+        LevelManager.Instance.StartNextDay();
+        NextDayCanvas.SetActive(false);
+    }
+    
+    public void RestartGameButton()
+    {
+        LevelManager.Instance.StartDay();
+        DeathCanvas.SetActive(false);
     }
 }

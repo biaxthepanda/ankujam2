@@ -8,7 +8,7 @@ public class arayuzkod : MonoBehaviour
 {
     public void stargame()
     {
-        SceneManager.LoadScene("Taha");
+        SceneManager.LoadScene("Biax");
     }
     public void exitgame()
     {

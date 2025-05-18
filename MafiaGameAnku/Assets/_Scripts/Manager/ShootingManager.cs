@@ -51,6 +51,12 @@ public class ShootingManager : MonoBehaviour
     public void DestroyShootingScene()
     {
         Destroy(CurrentShootingScene.gameObject);
+        GameObject[] agents = GameObject.FindGameObjectsWithTag("FriendlyAgent");
+        foreach (GameObject agent in agents)
+        {
+            Destroy(agent);
+        }
+
         CurrentShootingScene = null;
     }
 
@@ -62,7 +68,7 @@ public class ShootingManager : MonoBehaviour
             Debug.LogWarning("All enemies are dead");
             _currentDeadEnemy = 0;
             DestroyShootingScene();
-            GameManager.Instance.ChangeState(GameState.Cinematic);
+            GameManager.Instance.ChangeState(GameState.NextDayScreen);
         }
     }
 

@@ -10,6 +10,8 @@ public enum GameState
     Cinematic,
     BuyingBeforeNight,
     Start,
+    Died,
+    NextDayScreen
 }
 
 public class GameManager : MonoBehaviour
@@ -45,6 +47,12 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Start:
                 ChangeState(GameState.Day);
+                break;
+            case GameState.Died:
+                UIManager.Instance.OpenDeathCanvas();
+                break;
+            case GameState.NextDayScreen:
+                UIManager.Instance.OpenNextDayCanvas();
                 break;
         }
 

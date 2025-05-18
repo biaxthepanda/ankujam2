@@ -102,7 +102,7 @@ public class LevelManager : MonoBehaviour
     public void PlayerDied()
     {
         EndShootingGame();
-        StartDay();
+        GameManager.Instance.ChangeState(GameState.Died);
     }
 
     public void EndShootingGame() 
