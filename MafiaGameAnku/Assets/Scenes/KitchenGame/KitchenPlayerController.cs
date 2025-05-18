@@ -62,11 +62,14 @@ public class KitchenPlayerController : MonoBehaviour
     private bool isMoving = false;
     public GameObject carriedFood;
 
+
+
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && RayInputManager.Instance.IsMouseOverCamera(RayInputManager.Instance.cameras[2],Input.mousePosition))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            
+            Ray ray = RayInputManager.Instance.cameras[2].ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit))
@@ -87,9 +90,11 @@ public class KitchenPlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        //Debug.Log(other.name + "ALINDI " + carriedFood.ToString());
         // 🍗 Yemek al
         if (other.CompareTag("Food") && carriedFood == null)
         {
+            Debug.Log("Yemek alındı2");
             carriedFood = other.gameObject;
             carriedFood.transform.SetParent(transform);
             carriedFood.transform.localPosition = new Vector3(0, 1f, 0);
@@ -104,8 +109,8 @@ public class KitchenPlayerController : MonoBehaviour
             {
                 int foodType = carriedFood.GetComponent<Food>().foodType;
                 table.TryDeliverFood(foodType);
-
-                Destroy(carriedFood);
+                LevelManager.Instance.EarnMoney(10);
+                Destroy(carriedFood.gameObject);
                 carriedFood = null;
             }
         }

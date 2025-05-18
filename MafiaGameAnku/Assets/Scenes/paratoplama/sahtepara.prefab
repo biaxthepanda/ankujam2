@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3396711744311625761}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: sahtepara
   m_TagString: fake
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3703942037981973472}
   - component: {fileID: 6636739432336996623}
   - component: {fileID: 4645271169779224609}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: sahtepara
   m_TagString: fake
   m_Icon: {fileID: 0}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3439437912040527203}
   - component: {fileID: 3696274969320243678}
   - component: {fileID: 5727012087022894951}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: para
   m_TagString: real
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5929021664263298938}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: para
   m_TagString: real
   m_Icon: {fileID: 0}

@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2989642081542075951}
   - component: {fileID: 5310583410538929817}
   - component: {fileID: 7224562790897295805}
-  m_Layer: 13
-  m_Name: enemy
+  m_Layer: 6
+  m_Name: FPSenemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

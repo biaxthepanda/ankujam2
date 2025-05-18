@@ -80,6 +80,7 @@ public class LevelManager : MonoBehaviour
     public void EarnMoney(int amount)
     {
         EarnedMoneyInDay += amount;
+        UIManager.Instance.UpdateMoneyText(EarnedMoneyInDay);
     }
 
     public void StartShooting() 
