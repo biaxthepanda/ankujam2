@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
             case GameState.Cinematic:
                 break;
             case GameState.BuyingBeforeNight:
-                LevelManager.Instance.StartShooting();
+                UIManager.Instance.OpenBeforeNightCanvas();
                 break;
             case GameState.Start:
                 ChangeState(GameState.Day);
