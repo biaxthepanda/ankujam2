@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour, IInteractable
     void Die()
     {
         Debug.Log("Enemy öldü.");
+        SoundManager.Instance.PlaySFX(SoundEffects.Hit);
         LevelManager.Instance.EarnMoney(10);
         Destroy(gameObject);
     }

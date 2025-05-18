@@ -17,6 +17,7 @@ public class PlayerShooterAgent : ShooterAgent
 
     public void ResetPlayer()
     {
+        transform.localPosition = Vector3.zero;
         Health = InitialHealth;
         transform.rotation = Quaternion.identity;
         this.gameObject.SetActive(true);

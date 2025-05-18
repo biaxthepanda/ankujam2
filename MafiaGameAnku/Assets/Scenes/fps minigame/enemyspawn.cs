@@ -41,6 +41,8 @@ public class EnemySpawn : MonoBehaviour
 
     void SpawnEnemyGroup()
     {
+        if (LevelManager.Instance.DayIndex < 3) return;
+        Debug.Log("Spawn Enemy Group");
         for (int i = 0; i < mobsayısı; i++)
         {
             Vector3 offset = new Vector3((Random.Range(0, 2) * 2 - 1) * Random.Range(1f, 2f) * i, 0f, 0f);
@@ -53,9 +55,10 @@ public class EnemySpawn : MonoBehaviour
 
     private void HandleGameStateChanged(GameState newState)
     {
-        if (newState == GameState.Day && LevelManager.Instance.DayIndex > 2)
+        if (newState == GameState.Day)  //&& LevelManager.Instance.DayIndex > 2
         {
-             StartCoroutine(SpawnEnemiesLoop());
+
+            StartCoroutine(SpawnEnemiesLoop());
         }
         else
         {
