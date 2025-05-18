@@ -2001,7 +2001,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 67
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -6018,12 +6018,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShootingCamera: {fileID: 511251106}
   IsDayStarted: 0
-  DayIndex: -1
+  DayIndex: 0
   DayTime:
   - 25
-  - 99
-  - 99
-  - 99
+  - 4
+  - 4
+  - 4
   EarnedMoneyInDay: 0
   DayQuota: 
 --- !u!4 &1602462757 stripped
