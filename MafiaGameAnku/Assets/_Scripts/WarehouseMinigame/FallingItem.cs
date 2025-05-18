@@ -36,14 +36,14 @@ public class FallingItem : MonoBehaviour, IInteractable
     public void UnInteracted()
     {
         isHeld = false;
-        if(rb == null) return;
+        if (rb == null) return;
         rb.useGravity = true;
         rb.velocity = lastVelocity;
     }
 
     void Update()
     {
-        if(GameManager.Instance.CurrentState != GameState.Day) Destroy(gameObject);
+        if (GameManager.Instance.CurrentState != GameState.Day) Destroy(gameObject);
         if (isHeld)
         {
             FollowMouseConstrainedToCameraPlane();
@@ -52,7 +52,7 @@ public class FallingItem : MonoBehaviour, IInteractable
             {
                 char inputChar = char.ToUpper(Input.inputString[0]);
 
-                if (inputChar == itemKey)
+                if (inputChar == itemKey.ToString().ToUpper()[0])
                 {
                     Debug.Log("Doğru tuşa basıldı");
                     SoundManager.Instance.PlaySFX(SoundEffects.Box);
@@ -94,5 +94,10 @@ public class FallingItem : MonoBehaviour, IInteractable
     private bool MouseClicked()
     {
         return Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        SoundManager.Instance.PlaySFX(SoundEffects.BoxSurface);
     }
 }

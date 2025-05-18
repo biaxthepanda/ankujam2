@@ -6,7 +6,7 @@ public class PlayerShooterAgent : ShooterAgent
 {
     public void PlayerHitSomething()
     {
-
+        SoundManager.Instance.PlaySFX(SoundEffects.Hit);
     }
     public override void Die()
     {

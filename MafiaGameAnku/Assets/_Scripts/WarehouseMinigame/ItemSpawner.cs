@@ -36,7 +36,7 @@ public class ItemSpawner : MonoBehaviour
         Debug.Log(rand.ToString());
         if (!box) return;
         
-
+        SoundManager.Instance.PlaySFX(SoundEffects.Horn);
         GameObject item = Instantiate(itemPrefabs[box.BoxType], spawnPoint.position, this.transform.rotation);
         var falling = item.GetComponent<FallingItem>();
         falling.targetBox = box;
