@@ -53,9 +53,9 @@ public class RayInputManager : MonoBehaviour
 
                     if (Physics.Raycast(ray, out hit, rayLength,interableLayerMask))
                     {
-                        Debug.Log($"Hit from camera '{cam.name}' on: {hit.collider.name}");
+                        //Debug.Log($"Hit from camera '{cam.name}' on: {hit.collider.name}");
                         _currentInteractable = hit.transform.gameObject.GetComponent<IInteractable>();
-                        Debug.Log("Hit" + _currentInteractable.ToString());
+                        //Debug.Log("Hit" + _currentInteractable.ToString());
                         _currentInteractable.Interacted();
                         Debug.DrawLine(ray.origin, hit.point, rayColor, 2f); // 2 saniye �izsin
                     }
@@ -64,7 +64,7 @@ public class RayInputManager : MonoBehaviour
                         // E�er bir yere �arpmad�ysa d�z �izgi �iz
                         Vector3 endPoint = ray.origin + ray.direction * rayLength;
                         Debug.DrawLine(ray.origin, endPoint, Color.yellow, 2f);
-                        Debug.Log($"No hit from camera '{cam.name}'");
+                        //Debug.Log($"No hit from camera '{cam.name}'");
                     }
 
                     break; // sadece bir kamera ilgilenecek
@@ -81,7 +81,7 @@ public class RayInputManager : MonoBehaviour
         }
     }
 
-    bool IsMouseOverCamera(Camera cam, Vector2 mousePos)
+    public bool IsMouseOverCamera(Camera cam, Vector2 mousePos)
     {
         Rect viewportRect = cam.rect;
 
